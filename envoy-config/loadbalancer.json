@@ -26,25 +26,22 @@
                               }
                             ]
                           },
-                          "redirect": "{...}"
+                          "route": {
+                            "cluster": "google",
+                            "host_rewrite": "www.google.com",
+                            "timeout": 0
+                          }
                         }
                       ]
                     }
                   ]
                 },
-                "http_filters": [],
-                "add_user_agent": "{...}",
-                "tracing": "{...}",
-                "http_protocol_options": "{...}",
-                "http2_protocol_options": "{...}",
-                "server_name": "...",
-                "idle_timeout": "{...}",
-                "drain_timeout": "{...}",
-                "access_log": [],
-                "use_remote_address": "{...}",
-                "generate_request_id": "{...}",
-                "forward_client_cert_details": "...",
-                "set_current_client_cert_details": "{...}"
+                "http_filters": [
+                  {
+                    "name": "envoy.router",
+                    "config": {}
+                  }
+                ]
               }
             }
 
