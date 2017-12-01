@@ -1,0 +1,17 @@
+{
+  "listeners": [
+    {
+      "address": "tcp://0.0.0.0:80",
+      "filter_chains": [
+        {
+          "filters": []
+        }
+      ]
+    }
+  ],
+  "admin": {
+    "access_log_path": "/dev/null",
+    "address": "tcp://0.0.0.0:9001"
+  },
+  "cluster_manager": "{...}"
+}
