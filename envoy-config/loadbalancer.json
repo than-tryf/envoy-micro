@@ -4,7 +4,51 @@
       "address": "tcp://0.0.0.0:80",
       "filter_chains": [
         {
-          "filters": []
+          "filters": [
+            {
+              "name": "envoy.http_connection_manager",
+              "config": {
+                "codec_type": "HTTP2",
+                "stat_prefix": "ingress_http",
+                "route_config": {
+                  "virtual_hosts": [
+                    {
+                      "name": "tobackend",
+                      "domains": ["*"],
+                      "routes": [
+                        {
+                          "match": {
+                            "prefix": "/product",
+                            "headers": [
+                              {
+                                "name": ":method",
+                                "value": "POST"
+                              }
+                            ]
+                          },
+                          "redirect": "{...}"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "http_filters": [],
+                "add_user_agent": "{...}",
+                "tracing": "{...}",
+                "http_protocol_options": "{...}",
+                "http2_protocol_options": "{...}",
+                "server_name": "...",
+                "idle_timeout": "{...}",
+                "drain_timeout": "{...}",
+                "access_log": [],
+                "use_remote_address": "{...}",
+                "generate_request_id": "{...}",
+                "forward_client_cert_details": "...",
+                "set_current_client_cert_details": "{...}"
+              }
+            }
+
+          ]
         }
       ]
     }
