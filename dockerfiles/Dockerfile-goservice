@@ -1,0 +1,9 @@
+FROM envoyproxy/envoy:latest
+RUN apt-get -y update
+RUN apt-get install -y curl
+COPY goservice-envoy.json /etc/envoy.json
+COPY start_goservices_in_docker.sh /home/start_goservices.sh
+COPY goservice /home/serviceingo
+RUN chmod +x /home/start_goservices.sh
+EXPOSE 80
+ENTRYPOINT ["/home/start_goservices.sh"]

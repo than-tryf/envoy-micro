@@ -9,8 +9,8 @@ import (
 
 func main() {
 	r := mux.NewRouter()
-	r.HandleFunc("/product", getHelloWorld).Methods("GET")
-	r.HandleFunc("/product", postHelloWorld).Methods("POST")
+	r.HandleFunc("/goservice", getHelloWorld).Methods("GET")
+	r.HandleFunc("/goservice", postHelloWorld).Methods("POST")
 	log.Fatal(http.ListenAndServe(":8010", r))
 }
 
