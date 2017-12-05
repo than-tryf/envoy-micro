@@ -1,0 +1,44 @@
+{
+  "listeners": [
+    {
+      "address": "tcp://0.0.0.0:80",
+      "filters": [
+        {
+          "name": "http_connection_manager",
+          "config": {
+            "codec_type": "auto",
+            "stat_prefix": "ingress_http",
+            "route_config": {
+              "virtual_hosts": [
+                {
+                  "name": "tobackend",
+                  "domains": ["*"],
+                  "routes": [
+                    {
+                      "prefix": "/product",
+                      "cluster": "google",
+                      "host_rewrite": "www.google.com",
+                      "timeout_ms": 0
+                    }
+                  ]
+                }
+              ]
+            },
+            "filters": [
+              {
+                "name": "router",
+                "config": {}
+              }
+            ]
+          }
+        }
+
+      ]
+    }
+  ],
+  "admin": {
+    "access_log_path": "/dev/null",
+    "address": "tcp://0.0.0.0:9001"
+  },
+  "cluster_manager": "{...}"
+}
