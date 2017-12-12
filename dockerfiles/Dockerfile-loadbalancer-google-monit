@@ -1,0 +1,15 @@
+FROM envoyproxy/envoy:latest
+RUN apt-get -y update && apt-get -y install software-properties-common
+RUN apt-get install -y curl
+RUN \
+  echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
+  add-apt-repository -y ppa:webupd8team/java && \
+  apt-get update && \
+  apt-get install -y oracle-java8-installer && \
+  rm -rf /var/lib/apt/lists/* && \
+  rm -rf /var/cache/oracle-jdk8-installer
+COPY envoymonagent.jar /home/envoymonagent.jar
+COPY start_monservices.sh /home/start_monservices.sh
+RUN chmod +x /home/start_monservices.sh
+COPY load-balancer-google.json /etc/envoy.json
+ENTRYPOINT ["/home/start_monservices.sh"]
