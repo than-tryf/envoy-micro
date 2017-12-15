@@ -1,5 +1,7 @@
 #!/bin/sh
 
-cd ../services/goservice/
+sudo rm ../../services/goservice/bin/ -rf >/dev/null 2>&1
 
-go build -o bin/goservice
+cd ../../services/goservice
+go build -o bin/goservice >/dev/null 2>&1
+echo -e "\e[32mOK!"

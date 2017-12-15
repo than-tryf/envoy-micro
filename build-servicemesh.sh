@@ -1,5 +1,5 @@
 #!/bin/sh
-# Initializations
+
 clear
 
 ###############################################################
@@ -15,7 +15,22 @@ echo -e -n "\e[91mStopping Docker...............................................
 echo -e -n "\e[94mCreating Underlying Docker Network............................."
 ./scripts/container/2_docker_build_dockernet.sh
 
-# Building
+###############################################################
+#           Phase 2 - Build Services                          #
+###############################################################
+echo -e -n "\e[91m[Phase 2] > Build Services"
+echo -e -n "\e[91m--------------------------"
+
+# Go Service build
+echo -e -n "\e[32mBuild Go! Service.............................................."
+./scripts/appbuilders/build_go_service.sh
+
+###############################################################
+#           Phase 3 - Build & Run Containers                  #
+###############################################################
+echo -e -n "\e[91m[Phase 2] > Build Services"
+echo -e -n "\e[91m--------------------------"
+
 
 #The Google load balancer
 cp envoy-config/load-balancer-google.json dockerfiles/load-balancer-google.json
