@@ -21,6 +21,8 @@ echo -e -n "\e[94mCreating Underlying Docker Network............................
 echo -e -n "\e[91m[Phase 2] > Build Services"
 echo -e -n "\e[91m--------------------------"
 
+# TODO Needs to be automated to automatically build all scripts under folder scripts/appbuilders
+
 # Go Service build
 echo -e -n "\e[32mBuild Go! Service.............................................."
 ./scripts/appbuilders/build_go_service.sh
@@ -28,8 +30,8 @@ echo -e -n "\e[32mBuild Go! Service.............................................
 ###############################################################
 #           Phase 3 - Build & Run Containers                  #
 ###############################################################
-echo -e -n "\e[91m[Phase 2] > Build Services"
-echo -e -n "\e[91m--------------------------"
+echo -e -n "\e[91m[Phase 3] > Build Containers"
+echo -e -n "\e[91m----------------------------"
 
 
 #The Google load balancer
