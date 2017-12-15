@@ -1,7 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-docker network rm envoymesh >/dev/null 2>&1
+docker network rm envoymesh > /dev/null 2>&1
 
-# Build docker envoy network mesh
-docker network create -d bridge envoymesh >/dev/null 2>&1
-echo -e "\e[32mOK!"
+docker network create -d bridge envoymesh > /dev/null 2>&1
+echo -e -n "\e[32mOK!\n"
