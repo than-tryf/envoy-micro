@@ -1,13 +1,19 @@
 #!/bin/sh
-
-
 # Initializations
+clear
 
-cd scripts
-chmod +x *.sh
-./docker_clean_envoy.sh
-./build_envoy_dockernet.sh
-cd ..
+###############################################################
+#           Phase 1 - Initialization                          #
+###############################################################
+echo -e -n "\e[91m[Phase 1] > Initialization"
+echo -e -n "\e[91m--------------------------"
+
+find scripts/ -type f -iname "*.sh" -exec chmod +x {} \;
+
+echo -e -n "\e[91mStopping Docker................................................"
+./scripts/container/1_docker_clean_envoy.sh
+echo -e -n "\e[94mCreating Underlying Docker Network............................."
+./scripts/container/2_docker_build_dockernet.sh
 
 # Building
 
