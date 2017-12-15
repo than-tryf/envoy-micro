@@ -1,5 +1,5 @@
 FROM envoyproxy/envoy:latest
 RUN apt-get -y update
 RUN apt-get install -y curl
-COPY load-balancer-google.json /etc/envoy.json
+COPY envoy-config/load-balancer-google.json /etc/envoy.json
 CMD /usr/local/bin/envoy -c /etc/envoy.json

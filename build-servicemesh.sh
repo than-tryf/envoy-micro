@@ -30,37 +30,18 @@ echo -e -n "\e[32mBuild Go! Service.............................................
 ###############################################################
 #           Phase 3 - Build & Run Containers                  #
 ###############################################################
-echo -e -n "\e[91m[Phase 3] > Build Containers"
-echo -e -n "\e[91m----------------------------"
+echo -e -n "\e[91m[Phase 3] > Build - Run Containers"
+echo -e -n "\e[91m----------------------------------"
 
+# TODO Needs to be automated to automatically build all scripts under folder scripts/container/service-mesh/
 
-#The Google load balancer
-cp envoy-config/load-balancer-google.json dockerfiles/load-balancer-google.json
-cp scripts/build_lb_container_google.sh dockerfiles/build_lb_container_google.sh
+# Build docker container for google lb
+echo -e -n "\e[32mBuild Google L/B Service Docker................................"
+./scripts/container/service-mesh/docker_build_lbGoogle.sh
 
-cd dockerfiles
-chmod +x *.sh
-./build_lb_container_google.sh
-cd ..
-
-#The goservice
-cd scripts
-./build_go_service.sh
-cd ..
-cp services/goservice/bin/goservice dockerfiles/goservice
-cp scripts/start_goservices_in_docker.sh dockerfiles/start_goservices_in_docker.sh
-cp envoy-config/goservice-envoy.json dockerfiles/goservice-envoy.json
-cp scripts/build_go_container.sh dockerfiles/build_go_container.sh
-
-cd dockerfiles
-chmod +x *.sh
-./build_go_container.sh
-
-# Cleanup
-rm goservice
-rm *.json && rm *.sh
-cd ..
-
+# Build docker container for go service
+echo -e -n "\e[32mBuild Go! Service Docker......................................."
+./scripts/container/service-mesh/docker_build_goContainer.sh
 
 # Confirmation
 docker ps
