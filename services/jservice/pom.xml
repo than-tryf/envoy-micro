@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>jservice</name>
-	<description>Demo project for Spring Boot</description>
+	<description>jService</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -40,6 +40,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.3</version>
+		</dependency>
+
 	</dependencies>
 
 	<dependencyManagement>
