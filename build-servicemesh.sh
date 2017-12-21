@@ -43,6 +43,10 @@ echo -e -n "\e[94m Build Google L/B Service Docker..............................
 echo -e -n "\e[94m Build Go! Service Docker......................................."
 ./scripts/container/service-mesh/docker_build_goContainer.sh
 
+# Build docker container for go service
+echo -e -n "\e[94m Build Go! Service Docker......................................."
+./scripts/container/service-mesh/docker_build_jservice.sh
+
 echo -e -n "\e[39m\n\n"
 # Confirmation
 docker ps
